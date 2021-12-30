@@ -3,7 +3,7 @@
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
-		<title>Elementor #333 &#8211; Dauqu Developer</title>
+		<title>ISS TRACKING PAGE</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel='dns-prefetch' href='//www.googletagmanager.com' />
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -79,7 +79,7 @@ gtag("config", "G-VY4EXK7Z0H");
 <!-- End Google Analytics snippet added by Site Kit -->
 <script src='https://dev.dauqu.com/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=3.5.3' id='font-awesome-4-shim-js'></script>
 <link rel="https://api.w.org/" href="https://dev.dauqu.com/wp-json/" /><link rel="alternate" type="application/json" href="https://dev.dauqu.com/wp-json/wp/v2/pages/333" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://dev.dauqu.com/xmlrpc.php?rsd" />
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://dev.dauqu.com/wp-includes/wlwmanifest.xml" /> 
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://dev.dauqu.com/wp-includes/wlwmanifest.xml" />
 <meta name="generator" content="WordPress 5.8.2" />
 <meta name="generator" content="WooCommerce 6.0.0" />
 <link rel="canonical" href="https://dev.dauqu.com/elementor-333/" />
@@ -112,7 +112,7 @@ gtag("config", "G-VY4EXK7Z0H");
 </head>
 <body>
   <div id="loading">
-   
+
   </div>
   <div id="cesiumContainer"></div>
   <script>
@@ -128,17 +128,17 @@ gtag("config", "G-VY4EXK7Z0H");
     // viewer.scene.globe.enableLighting = true;
     // These 2 lines are published by NORAD and allow us to predict where
     // the ISS is at any given moment. They are regularly updated.
-    // Get the latest from: https://celestrak.com/satcat/tle.php?CATNR=25544. 
-    const ISS_TLE = 
+    // Get the latest from: https://celestrak.com/satcat/tle.php?CATNR=25544.
+    const ISS_TLE =
     `1 25544U 98067A   21121.52590485  .00001448  00000-0  34473-4 0  9997
     2 25544  51.6435 213.5204 0002719 305.2287 173.7124 15.48967392281368`;
     const satrec = satellite.twoline2satrec(
-      ISS_TLE.split('\n')[0].trim(), 
+      ISS_TLE.split('\n')[0].trim(),
       ISS_TLE.split('\n')[1].trim()
     );
     // Give SatelliteJS the TLE's and a specific time.
     // Get back a longitude, latitude, height (km).
-    // We're going to generate a position every 10 seconds from now until 6 seconds from now. 
+    // We're going to generate a position every 10 seconds from now until 6 seconds from now.
     const totalSeconds = 60 * 60 * 6;
     const timestepInSeconds = 10;
     const start = Cesium.JulianDate.fromDate(new Date());
@@ -149,7 +149,7 @@ gtag("config", "G-VY4EXK7Z0H");
     viewer.timeline.zoomTo(start, stop);
     viewer.clock.multiplier = 40;
     viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP;
-    
+
     const positionsOverTime = new Cesium.SampledPositionProperty();
     for (let i = 0; i < totalSeconds; i+= timestepInSeconds) {
       const time = Cesium.JulianDate.addSeconds(start, i, new Cesium.JulianDate());
@@ -162,16 +162,16 @@ gtag("config", "G-VY4EXK7Z0H");
       const position = Cesium.Cartesian3.fromRadians(p.longitude, p.latitude, p.height * 1000);
       positionsOverTime.addSample(time, position);
     }
-    
+
     // Visualize the satellite with a red dot.
     const satellitePoint = viewer.entities.add({
       position: positionsOverTime,
       point: { pixelSize: 5, color: Cesium.Color.RED }
     });
 
-    // Set the camera to follow the satellite 
+    // Set the camera to follow the satellite
     viewer.trackedEntity = satellitePoint;
-    // Wait for globe to load then zoom out     
+    // Wait for globe to load then zoom out
     let initialized = false;
     viewer.scene.globe.tileLoadProgressEvent.addEventListener(() => {
       if (!initialized && viewer.scene.globe.tilesLoaded === true) {
@@ -211,7 +211,7 @@ gtag("config", "G-VY4EXK7Z0H");
 			<div class="elementor-widget-wrap elementor-element-populated">
 								<div class="elementor-element elementor-element-a946e51 elementor-widget elementor-widget-html" data-id="a946e51" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-			
+
 
     <title>ISS HD Earth Viewing Experiment</title>
 
